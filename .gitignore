@@ -1,8 +1,9 @@
-pom.xml
 *jar
-/lib/
-/classes/
-target/
+*~
 .lein-deps-sum
 .lein-env
-*~
+.lein-failures
+/classes/
+/lib/
+pom.xml
+target/
