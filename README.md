@@ -1,4 +1,4 @@
-# choreo
+# choreo [![Build Status](https://travis-ci.org/rubicks/choreo.png?branch=master)](https://travis-ci.org/rubicks/choreo)
 
 FIXME
 
@@ -16,4 +16,4 @@ To start a web server for the application, run:
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 rubicks
