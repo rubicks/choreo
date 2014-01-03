@@ -13,3 +13,6 @@ deploy:
   api_key:
     secure: XlpJUnvjuguKXafPSMsqtn/MI242Ff52PRzVqdzB40WFoq4Eqpmw+Ig3xEjKFYr6ECwBYz10UbJTne4uTBgMYWxUUsLmsKdHhyROdPNc+LK0lBL+202f1BS6muEuKgvIi8gQMpgM2QeiEIT7jcZJAhYVyx8qTWZminORhPjSJYs=
   app: sheltered-dusk-9213
+  on:
+    branch: master
+    jdk: openjdk7
