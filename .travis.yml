@@ -1,18 +1,30 @@
 language: clojure
-lein: lein2
-script: lein2 clean && lein2 test
+
 jdk:
-  - oraclejdk8
+  - openjdk6
   - openjdk7
   - oraclejdk7
-  - openjdk6
+  - oraclejdk8
+
 env:
-  - _JAVA_OPTIONS='-Xms64m -Xmx128m -XX:+AggressiveOpts'
+  global:
+    - PROJECT_DIR=${TRAVIS_BUILD_DIR}
+    - _JAVA_OPTIONS='-Xms64m -Xmx128m -XX:+AggressiveOpts'
+
+before_install : ./travis/before_install.sh
+install        : ./travis/install.sh
+before_script  : ./travis/before_script.sh
+script         : ./travis/script.sh
+after_success  : ./travis/after_success.sh
+after_failure  : ./travis/after_failure.sh
+after_script   : ./travis/after_script.sh
+
 deploy:
   provider: heroku
   api_key:
     secure: XlpJUnvjuguKXafPSMsqtn/MI242Ff52PRzVqdzB40WFoq4Eqpmw+Ig3xEjKFYr6ECwBYz10UbJTne4uTBgMYWxUUsLmsKdHhyROdPNc+LK0lBL+202f1BS6muEuKgvIi8gQMpgM2QeiEIT7jcZJAhYVyx8qTWZminORhPjSJYs=
   app: sheltered-dusk-9213
   on:
+    repo: rubicks/choreo
     branch: master
     jdk: openjdk7
