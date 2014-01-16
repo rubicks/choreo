@@ -23,10 +23,12 @@
    [compojure "1.1.6"]
    [lib-noir "0.7.9"]
    [com.postspectacular/rotor "0.1.0"]]
+
   :ring
   {:handler choreo.handler/app,
    :init choreo.handler/init,
    :destroy choreo.handler/destroy}
+
   :profiles
   {:production
    {:ring

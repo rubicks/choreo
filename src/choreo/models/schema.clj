@@ -1,6 +1,9 @@
 (ns choreo.models.schema
-  (:require [clojure.java.jdbc :as sql]
-            [noir.io :as io]))
+  (:require
+   [clojure.java.jdbc :as sql]
+   [noir.io :as io]
+   [taoensso.timbre :as timbre]
+   ))
 
 (def db-store "site.db")
 
@@ -9,28 +12,36 @@
               :subname (str (io/resource-path) db-store)
               :user "sa"
               :password ""
-              :naming {:keys clojure.string/lower-case
+              :naming {:keys clojure.string/upper-case
                        :fields clojure.string/upper-case}})
+
 (defn initialized?
   "checks to see if the database schema is present"
-  []
+  [& args]
   (.exists (new java.io.File (str (io/resource-path) db-store ".h2.db"))))
 
-(defn create-users-table
-  []
+(defn- -create-guestbook-table [& args]
   (sql/with-connection db-spec
     (sql/create-table
-      :users
-      [:id "varchar(20) PRIMARY KEY"]
-      [:first_name "varchar(30)"]
-      [:last_name "varchar(30)"]
-      [:email "varchar(30)"]
-      [:admin :boolean]
-      [:last_login :time]
-      [:is_active :boolean]
-      [:pass "varchar(100)"])))
+      :guestbook
+      [:id        "INTEGER PRIMARY KEY AUTO_INCREMENT"]
+      [:timestamp :timestamp]
+      [:name      "varchar(30)"]
+      [:message   "varchar(200)"])
+    (sql/do-commands
+     "CREATE INDEX timestamp_index ON guestbook (timestamp)"))
+  ;; (timbre/info "success: choreo.models.schema/-create-guestbook-table")
+  ;; (timbre/info (meta args))
+  )
 
-(defn create-tables
+(defn- -create-tables
   "creates the database tables used by the application"
-  []
-  (create-users-table))
+  [& args]
+  (-create-guestbook-table)
+  ;; (timbre/info "success: choreo.models.schema/-create-tables")
+  )
+
+(defn init [& args]
+  (-create-tables)
+  ;; (timbre/info "success: choreo.models.schema/init")
+  )
