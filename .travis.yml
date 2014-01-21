@@ -23,8 +23,10 @@ deploy:
   provider: heroku
   api_key:
     secure: Cyvu2Dg/1ydTXin20FFkr6YkyywU2fI+umUytA5yzkG2yCD95lqw7f5YBobGZ4jcKWTQ6vydkqoYpYaj2oSoSbtlHrB7jJQnAXTVHKOdBsEqkx2wJ+OfdfKnatXlbFBAM3NJjiDaZTAin4lDEqcpq7FgxtFF9mekWLTuVMCIH3Q=
-  app: sheltered-dusk-9213
+  app:
+    master : choreo-app
+    dev    : sheltered-dusk-9213
   on:
-    repo: rubicks/choreo
-    branch: master
-    jdk: openjdk7
+    all_branches : true
+    jdk          : openjdk7
+    repo         : rubicks/choreo
