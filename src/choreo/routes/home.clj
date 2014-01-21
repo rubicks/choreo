@@ -7,11 +7,16 @@
    ))
 
 
+(defn- -about-page []
+  ;; (println (.getClassName (first (.getStackTrace (Throwable.)))))
+  (layout/render "about.html"))
+
+
 (defn- -home-page [& [name message error]]
   (layout/render "home.html"
-                 {:error error
-                  :name name
-                  :message message
+                 {:error    error
+                  :name     name
+                  :message  message
                   :messages (db/get-messages)}))
 
 
@@ -27,11 +32,7 @@
      (-home-page))))
 
 
-(defn- -about-page []
-  (layout/render "about.html"))
-
-
 (defroutes home-routes
-  (GET "/" [] (-home-page))
-  (GET "/" [name message] (-home-page name message))
-  (GET "/about" [] (-about-page)))
+  (GET  "/"      []             (-home-page))
+  (POST "/"      [name message] (-save-message name message))
+  (GET  "/about" []             (-about-page)))
