@@ -27,6 +27,6 @@ deploy:
     master : choreo-app
     dev    : sheltered-dusk-9213
   on:
-    jdk          : openjdk7
+    jdk  : openjdk7
+    repo : rubicks/choreo
 #    all_branches : true
-#    repo         : rubicks/choreo
