@@ -21,7 +21,7 @@ after_script   : ./travis/after_script.sh
 
 deploy:
   provider  : heroku
-  buildpack : https://github.com/heroku/heroku-buildpack-clojure
+  buildpack : https://github.com/heroku/heroku-buildpack-clojure.git
   api_key:
     secure  : Cyvu2Dg/1ydTXin20FFkr6YkyywU2fI+umUytA5yzkG2yCD95lqw7f5YBobGZ4jcKWTQ6vydkqoYpYaj2oSoSbtlHrB7jJQnAXTVHKOdBsEqkx2wJ+OfdfKnatXlbFBAM3NJjiDaZTAin4lDEqcpq7FgxtFF9mekWLTuVMCIH3Q=
   app:
