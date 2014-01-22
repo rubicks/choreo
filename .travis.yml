@@ -19,15 +19,15 @@ after_success  : ./travis/after_success.sh
 after_failure  : ./travis/after_failure.sh
 after_script   : ./travis/after_script.sh
 
+# http://docs.travis-ci.com/user/deployment/heroku/
 deploy:
-  provider  : heroku
-  buildpack : https://github.com/heroku/heroku-buildpack-clojure.git
+  provider: heroku
+  buildpack: https://github.com/heroku/heroku-buildpack-clojure.git
   api_key:
-    secure  : Cyvu2Dg/1ydTXin20FFkr6YkyywU2fI+umUytA5yzkG2yCD95lqw7f5YBobGZ4jcKWTQ6vydkqoYpYaj2oSoSbtlHrB7jJQnAXTVHKOdBsEqkx2wJ+OfdfKnatXlbFBAM3NJjiDaZTAin4lDEqcpq7FgxtFF9mekWLTuVMCIH3Q=
+    secure: Cyvu2Dg/1ydTXin20FFkr6YkyywU2fI+umUytA5yzkG2yCD95lqw7f5YBobGZ4jcKWTQ6vydkqoYpYaj2oSoSbtlHrB7jJQnAXTVHKOdBsEqkx2wJ+OfdfKnatXlbFBAM3NJjiDaZTAin4lDEqcpq7FgxtFF9mekWLTuVMCIH3Q=
   app:
     master : choreo-app
     dev    : sheltered-dusk-9213
   on:
     jdk  : openjdk7
     repo : rubicks/choreo
-#    all_branches : true
